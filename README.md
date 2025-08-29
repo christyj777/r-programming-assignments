@@ -1,4 +1,4 @@
 # r-programming-assignments
-Christine Jacob
-LIS4317
-Repository for R Programming Assignments
+**Name:** Christine Jacob
+**Class:** LIS4317
+**Description:** Repository for R Programming Assignments
