@@ -1,0 +1,44 @@
+#1. Import data 
+student6 <- read.csv(file.choose(), stringsAsFactors = FALSE)
+# Look at data
+head(student6)
+
+#Group by Sex and compute mean Grade with plyr
+library(plyr)
+gender_mean <- ddply(
+  student6,
+  "Sex",
+   transform,
+  GradeAverage = mean(Grade)
+)
+gender_mean
+
+#create CSV
+write.table(
+  gender_mean,
+  file      = "gender_mean.txt",
+  sep       = "\t",
+  row.names = FALSE
+)
+
+#2. Filter Names Containing “i” 
+#Select rows where Name contains “i/I" (used ignore.case method)
+i_students <- subset(
+  student6,
+  grepl("i", Name, ignore.case = TRUE)
+)
+
+# Extract just the names and write them to a CSV
+write.csv(
+  i_students$Name,
+  file      = "i_students.csv",
+  row.names = FALSE,
+  quote     = FALSE
+)
+
+#3. Export and save the full filtered data frame to a CSV
+write.csv(
+  i_students,
+  file      = "i_students_full.csv",
+  row.names = FALSE
+)
