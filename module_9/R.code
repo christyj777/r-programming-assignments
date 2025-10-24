@@ -1,0 +1,36 @@
+ #1 Base R Graphs
+# Scatter plot: Horsepower vs. Miles per Gallon
+plot(mtcars$hp, mtcars$mpg,
+     main = "Base R: Horsepower vs. MPG",
+     xlab = "Horsepower (hp)",
+     ylab = "Miles per Gallon (mpg)",
+     pch = 19, col = "steelblue")
+
+# Histogram: Distribution of Miles per Gallon
+hist(mtcars$mpg,
+     main = "Base R: Distribution of MPG",
+     xlab = "Miles per Gallon (mpg)",
+     col = "lightgreen", border = "white")
+
+#2 Lattice Graphs
+library(lattice)
+
+# Boxplot: Horsepower by Cylinder Count
+bwplot(hp ~ factor(cyl),
+       data = mtcars,
+       main = "Lattice: Horsepower by Cylinder Count",
+       xlab = "Number of Cylinders",
+       ylab = "Horsepower (hp)")
+
+#3 ggplot2
+library(ggplot2)
+
+# Faceted histogram: MPG distribution by Transmission type (am)
+ggplot(mtcars, aes(x = mpg, fill = factor(am))) +
+  geom_histogram(binwidth = 2, color = "white") +
+  facet_wrap(~ am, labeller = labeller(am = c(`0` = "Automatic", `1` = "Manual"))) +
+  labs(title = "ggplot2: MPG Distribution by Transmission Type",
+       x = "Miles per Gallon (mpg)", fill = "Transmission") +
+  theme_minimal()
+
+
