@@ -1,0 +1,46 @@
+---
+title: "My R Markdown Primer"
+author: "Christine Jacob"
+output: html_document
+date: "2025-11-12"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## What is R Markdown?
+
+R Markdown is a file format that allows you to combine narrative text, code, and formatted mathematical notation in a single, reproducible document. It supports embedded R code chunks whose results—such as printed output, tables, and plots—are included directly in the final HTML or PDF output. This makes it a powerful tool for data analysis, reporting, and reproducible research.
+
+## Why R Markdown is Useful
+
+One of the key strengths of R Markdown is its ability to keep analysis and explanation together. Rather than switching between separate documents for code and for reporting, R Markdown lets you work in a single file. This improves organization and helps ensure that results shown in the report always reflect the current version of the code.
+
+## Mathematical Example
+
+Inline math example: The linear model can be written as $\alpha + \beta = \gamma$.
+
+Displayed equation:
+
+$$
+y_i = \beta_0 + \beta_1 x_i + \epsilon_i
+$$
+## Load library
+```{r load, echo=TRUE}
+library(ggplot2)
+data(mtcars)
+head(mtcars)
+```
+## Generate a plot
+```{r plot, echo=TRUE}
+ggplot(mtcars, aes(x = wt, y = mpg)) +
+  geom_point() +
+  labs(
+    title = "Fuel Efficiency vs. Weight",
+    x = "Weight (1000 lbs)",
+    y = "Miles per Gallon"
+  )
+```
+
+## Reflection
+Using R Markdown provides a seamless way to combine computation and explanation. Compared to writing plain reports, R Markdown ensures that outputs are always up-to-date because they are generated directly from the code. This reduces errors and increases reproducibility, especially when sharing work with collaborators or revisiting analyses in the future.
